@@ -1,103 +1,107 @@
-# HireFlow AI
+# HireFlow AI 🚀
 
-HireFlow AI helps job seekers manage applications and use AI assistance to improve job targeting, resume alignment, and interview preparation.
+> An AI-powered job search copilot that helps students track applications, analyze job opportunities, evaluate resume matches, and prepare stronger applications.
 
-## Features
+## ✨ Features
 
-- Authentication (signup, login, JWT sessions)
-- Application tracking (create, read, update, delete)
-- Dashboard analytics from real application data
-- AI Job Analyzer
-- AI Resume Matcher
-- AI Application Copilot
+### 🔐 Authentication
+- User signup and login
+- JWT-based authentication
+- Protected API routes
+- Secure session handling
 
-## Tech Stack
+### 📊 Application Tracker
+- Add job applications
+- View applications
+- Edit applications
+- Delete applications
+- Track application status
+- Track next actions
+- Dashboard statistics
 
-Frontend:
+### 🤖 AI Job Analyzer
+Paste a job description and get:
+- Job match score
+- Matching skills
+- Missing skills
+- Recommended skills
+- Key requirements
+- Seniority
+- Application recommendation
 
+### 📄 AI Resume + Job Matcher
+Upload a PDF/DOCX/TXT resume or paste resume text and compare it against a job description.
+
+Provides:
+- Match score
+- Matching skills
+- Missing skills
+- Experience analysis
+- Strengths
+- Resume improvement suggestions
+- Application recommendation
+
+### 🚀 AI Application Copilot
+Generate a complete application preparation kit:
+- Tailored cover letter
+- Why you're a good fit
+- Skills to highlight
+- 5 likely interview questions
+- Interview preparation tips
+
+The AI is instructed not to invent experience, skills, projects, or achievements that aren't supported by the resume.
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
 - React
+- TypeScript
 - TanStack Router
+- Vite
 - Tailwind CSS
 
-Backend:
-
+### Backend
 - Node.js
-- Express
+- Express.js
 - MongoDB
+- Mongoose
+- JWT
 
-AI:
+### AI
+- Google Gemini
+- Gemini 3.6 Flash
 
-- Google Gemini (`gemini-3.6-flash`)
+### Other
+- Git
+- GitHub
+- REST APIs
 
-## Setup
+---
 
-1. Clone the repository.
-2. Install frontend dependencies:
+## 🏗️ Architecture
 
-```sh
-npm install
-```
-
-3. Install backend dependencies:
-
-```sh
-cd backend
-npm install
-cd ..
-```
-
-4. Create `backend/.env` from `backend/.env.example`.
-5. Add MongoDB URI.
-6. Add JWT secret.
-7. Add Gemini API key.
-8. Start backend:
-
-```sh
-cd backend
-node server.js
-```
-
-9. Start frontend:
-
-```sh
-npm run dev
-```
-
-## API Overview
-
-- Auth:
-	- `POST /api/auth/signup`
-	- `POST /api/auth/login`
-	- `GET /api/auth/me`
-- Applications (JWT required):
-	- `POST /api/applications`
-	- `GET /api/applications`
-	- `GET /api/applications/:id`
-	- `PUT /api/applications/:id`
-	- `DELETE /api/applications/:id`
-- AI (JWT required):
-	- `POST /api/ai/analyze-job`
-	- `POST /api/ai/analyze-resume`
-	- `POST /api/ai/application-copilot`
-
-## Development Commands
-
-- Frontend dev server: `npm run dev`
-- Frontend build: `npm run build`
-- Frontend lint: `npm run lint`
-- Backend syntax checks:
-	- `node --check backend/server.js`
-	- `node --check backend/routes/authRoutes.js`
-	- `node --check backend/routes/applicationRoutes.js`
-	- `node --check backend/routes/aiRoutes.js`
-	- `node --check backend/services/aiService.js`
-
-## Security Notes
-
-- Keep secrets only in `backend/.env`:
-	- `MONGO_URI`
-	- `JWT_SECRET`
-	- `GEMINI_API_KEY`
-- Never commit real credentials.
-- Use `backend/.env.example` as a placeholder template only.
-- AI endpoints are JWT-protected and run Gemini calls server-side so API keys never reach the frontend.
+```text
+                    ┌─────────────────────┐
+                    │    HireFlow AI      │
+                    │      Frontend       │
+                    │ React + Vite        │
+                    └──────────┬──────────┘
+                               │
+                               │ REST API
+                               ▼
+                    ┌─────────────────────┐
+                    │      Express        │
+                    │      Backend        │
+                    └──────┬───────┬──────┘
+                           │       │
+                    ┌──────▼───┐   │
+                    │ MongoDB   │   │
+                    │  Atlas    │   │
+                    └───────────┘   │
+                                    ▼
+                           ┌────────────────┐
+                           │ Google Gemini  │
+                           │   AI Engine    │
+                           └────────────────┘
